@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  performer_name: MyString
+  performer_description: MyText
+
+two:
+  performer_name: MyString
+  performer_description: MyText

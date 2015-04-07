@@ -1,3 +1,5 @@
 class Photo < ActiveRecord::Base
-  belongs_to :user
+	mount_uploader :filename, PhotoUploader
+ 	belongs_to :venue
+ 	validates :filename, presence: true
 end

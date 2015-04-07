@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406083930) do
+ActiveRecord::Schema.define(version: 20150407000857) do
 
   create_table "avatars", force: :cascade do |t|
     t.string   "filename"
@@ -23,11 +23,14 @@ ActiveRecord::Schema.define(version: 20150406083930) do
   add_index "avatars", ["user_id"], name: "index_avatars_on_user_id"
 
   create_table "gigs", force: :cascade do |t|
-    t.integer  "performer_id"
-    t.integer  "venue_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "performer_id_id"
+    t.integer  "venue_id_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "gigs", ["performer_id_id"], name: "index_gigs_on_performer_id_id"
+  add_index "gigs", ["venue_id_id"], name: "index_gigs_on_venue_id_id"
 
   create_table "performers", force: :cascade do |t|
     t.string   "performer_name"
@@ -71,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150406083930) do
     t.text     "venue_description"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "venue_zip_code"
   end
 
 end

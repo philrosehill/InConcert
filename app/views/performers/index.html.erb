@@ -1,2 +1,10 @@
 <h1>Performers#index</h1>
 <p>Find me in app/views/performers/index.html.erb</p>
+
+<p><%= link_to "Add a new Performer", new_performer_path %>	</p>
+
+<h2>These are the Performers in the database</h2>
+
+
+<%= simple_table_for @performers, with: PerformersTable %>
+

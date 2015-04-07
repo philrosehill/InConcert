@@ -8,13 +8,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  # resources :users do 
-  #   resources :avatars
-  # end
 
-  # resources :users do 
-  #   resources :photos
-  # end
+  resources :venues do 
+    resources :photos
+  end
 
 
 

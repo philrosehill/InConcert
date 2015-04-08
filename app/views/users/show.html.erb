@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User Display</h1>
+
+This is the User: <br>
+<%= @user.name %>
+<br>
+<br>
+
+<%= @user.name %> likes these Gigs: <br>
+<% @user.gigs.each do |gig| %>
+	<%= link_to "Gig", gig_path(gig)%>: <%= link_to "#{gig.performer.performer_name}", performer_path(gig.performer) %> at <%= link_to "#{gig.venue.venue_name}", venue_path(gig.venue) %> on <%= gig.date %> <br>
+<% end %>
+<br>
+<br>
+
+<%= @user.name %> likes these Performers: <br>
+<% @user.performers.each do |performer| %>
+	<%= link_to "#{performer.performer_name}", performer_path(performer) %>, a <%= performer.performer_description %> <br>
+<% end %>
+<br>
+<br>
+
+<%= @user.name %> likes these Venues: <br>
+<% @user.venues.each do |venue| %>
+	<%= link_to "#{venue.venue_name}", venue_path(venue) %>, a <%= venue.venue_description %> in <%= venue.venue_zip_code %> <br>
+<% end %>
+<br>
+<br>
+

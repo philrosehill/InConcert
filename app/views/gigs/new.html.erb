@@ -1,8 +1,8 @@
-<h1>Gigs#new</h1>
-<p>Find me in app/views/gigs/new.html.erb</p>
+<h1>Add a Gig</h1>
 
 <%= simple_form_for @gig, html: {class: "form-horizontal"} do |form| %>
 	<%= form.input :performer_id %>
 	<%= form.input :venue_id %>
+	<%= form.input :date %>
 	<%= form.submit "Add Gig", class: "btn btn-primary" %>
 <% end %>

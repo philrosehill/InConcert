@@ -1,6 +1,21 @@
 class UsersTable < TableCloth::Base
+  column :name do |user|
+    link_to "#{user.name}", user_path(user) 
+  end
+  
+  column :email
+  column :rank
+  column :user_zip_code
 
-  #USE THIS LATER
+  # actions separator: ' - ' do
+  #   action do |user|
+  #     link_to "Edit User", edit_user_path(user)
+  #   end
+
+  # end
+
+  config.table.class = "table table-bordered"
+
 
   # Define columns with the #column method
   # column :name, :email

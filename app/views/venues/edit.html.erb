@@ -1,2 +1,12 @@
-<h1>Venues#edit</h1>
-<p>Find me in app/views/venues/edit.html.erb</p>
+<h1>Edit a Venue</h1>
+
+Current info:
+<%= @venue.venue_name %> is a  <%= @venue.venue_description %>
+<br>
+
+<%= simple_form_for @venue, html: {class: "form-horizontal"} do |form| %>
+	<%= form.input :venue_name %>
+	<%= form.input :venue_description %>
+	<%= form.input :venue_zip_code %>
+	<%= form.submit "Update Venue", class: "btn btn-primary" %>
+<% end %>

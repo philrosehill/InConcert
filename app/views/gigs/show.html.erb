@@ -1,2 +1,15 @@
-<h1>Gigs#show</h1>
-<p>Find me in app/views/gigs/show.html.erb</p>
+<h1>Gig Display</h1>
+
+This is the Gig: <br>
+<%= link_to "#{@gig.performer.performer_name}", performer_path(@gig.performer) %> at <%= link_to "#{@gig.venue.venue_description}", venue_path(@gig.venue) %>
+<br> 
+<br>
+
+These Users like this Gig: <br>
+<% @gig.users.each do |user| %>
+	<%= link_to "#{user.name}", user_path(user) %> <br>
+<% end %>
+<br>
+<br>
+<p>To edit this Gig, <%= link_to "Click Here", edit_gig_path(@gig.id) %></p>
+

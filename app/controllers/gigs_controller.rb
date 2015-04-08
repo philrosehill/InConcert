@@ -1,5 +1,5 @@
 class GigsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @gigs = Gig.all
@@ -20,17 +20,26 @@ class GigsController < ApplicationController
   end
 
   def edit
+    @gig = Gig.find(params[:id])
   end
 
   def update
+    @gig = Gig.find(params[:id])
+
+    if @gig.update_attributes(gig_params)
+      redirect_to gigs_path
+    else
+      render :edit
+    end
   end
 
   def show
+    @gig = Gig.find(params[:id])
   end
 
   private
 
   def gig_params
-    params.require(:gig).permit(:performer_id, :venue_id)
+    params.require(:gig).permit(:gig_id, :venue_id, :date)
   end
 end

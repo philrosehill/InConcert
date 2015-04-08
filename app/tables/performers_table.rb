@@ -1,6 +1,17 @@
 class PerformersTable < TableCloth::Base
-  column :performer_name
+  column :performer_name do |performer|
+    link_to "#{performer.performer_name}", performer_path(performer) 
+  end
+
   column :performer_description  
+
+  actions separator: ' - ' do
+    action do |performer|
+      link_to "Edit Performer", edit_performer_path(performer)
+    end
+  end
+
+  config.table.class = "table table-bordered"
 
   # Define columns with the #column method
   # column :name, :email

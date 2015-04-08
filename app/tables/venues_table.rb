@@ -1,7 +1,30 @@
 class VenuesTable < TableCloth::Base
-  column :venue_name
+  column :venue_name do |venue|
+    link_to "#{venue.venue_name}", venue_path(venue) 
+  end
+  
   column :venue_description
   column :venue_zip_code
+
+  actions separator: ' - ' do
+    action do |venue|
+      link_to "Edit Venue", edit_venue_path(venue)
+    end
+
+    action do |venue|
+      link_to "Add Photo", new_venue_photo_path(venue)
+    end
+
+    # action do |venue|
+    #   if venue.photos.any?
+    #     link_to "View All Photos", venue_comments_path(venue)
+    #   end
+    # end
+
+  end
+
+  config.table.class = "table table-bordered"
+
 
   # Define columns with the #column method
   # column :name, :email

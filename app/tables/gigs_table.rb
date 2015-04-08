@@ -1,6 +1,26 @@
 class GigsTable < TableCloth::Base
-  column :performer_id
-  column :venue_id
+  column :id do |gig|
+    link_to "#{gig.id}", gig_path(gig) 
+  end
+
+  column :performer do |gig|
+    link_to "#{gig.performer.performer_name}", performer_path(gig.performer) 
+  end
+
+  column :venue do |gig|
+    link_to "#{gig.venue.venue_name}", venue_path(gig.venue)
+  end
+
+  column :date
+
+  actions separator: ' - ' do
+    action do |gig|
+      link_to "Edit Gig", edit_gig_path(gig)
+    end
+  end
+    
+  config.table.class = "table table-bordered"
+  
   # Define columns with the #column method
   # column :name, :email
 

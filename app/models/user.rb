@@ -8,5 +8,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :performers
   has_and_belongs_to_many :venues
   has_and_belongs_to_many :gigs
+	validates :name, presence: true
+	validates :rank, presence: true
+	validates :user_zip_code, length: {minimum: 5}
 
 end

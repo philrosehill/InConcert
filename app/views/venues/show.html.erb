@@ -1,2 +1,22 @@
-<h1>Venues#show</h1>
-<p>Find me in app/views/venues/show.html.erb</p>
+<h1>Venue Display</h1>
+
+This is the Venue: <br>
+<%= @venue.venue_name %> is a  <%= @venue.venue_description %> in zip code <%= @venue.venue_zip_code %>
+<br>
+<br>
+
+<%= @venue.venue_name %> has these Gigs: <br>
+<% @venue.gigs.each do |gig| %>
+	<%= link_to "#{gig.performer.performer_name}", performer_path(gig.performer) %> on <%= gig.date %><br>
+<% end %>
+<br>
+<br>
+
+These Users like <%= @venue.venue_name %>: <br>
+<% @venue.users.each do |user| %>
+	<%= link_to "#{user.name}", user_path(user) %> <br>
+<% end %>
+<br>
+<br>
+<p>To edit this Venue, <%= link_to "Click Here", edit_venue_path(@venue.id) %></p>
+

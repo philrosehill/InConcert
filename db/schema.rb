@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407000857) do
+ActiveRecord::Schema.define(version: 20150408154552) do
 
   create_table "avatars", force: :cascade do |t|
     t.string   "filename"
@@ -23,20 +23,35 @@ ActiveRecord::Schema.define(version: 20150407000857) do
   add_index "avatars", ["user_id"], name: "index_avatars_on_user_id"
 
   create_table "gigs", force: :cascade do |t|
-    t.integer  "performer_id_id"
-    t.integer  "venue_id_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "performer_id"
+    t.integer  "venue_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "date"
   end
 
-  add_index "gigs", ["performer_id_id"], name: "index_gigs_on_performer_id_id"
-  add_index "gigs", ["venue_id_id"], name: "index_gigs_on_venue_id_id"
+  add_index "gigs", ["performer_id"], name: "index_gigs_on_performer_id"
+  add_index "gigs", ["venue_id"], name: "index_gigs_on_venue_id"
+
+  create_table "gigs_users", force: :cascade do |t|
+    t.integer  "gig_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "performers", force: :cascade do |t|
     t.string   "performer_name"
     t.text     "performer_description"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "performers_users", force: :cascade do |t|
+    t.integer  "performer_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "photos", force: :cascade do |t|
@@ -64,10 +79,18 @@ ActiveRecord::Schema.define(version: 20150407000857) do
     t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_venues", force: :cascade do |t|
+    t.integer  "venue_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"

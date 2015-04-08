@@ -1,2 +1,12 @@
-<h1>Gigs#edit</h1>
-<p>Find me in app/views/gigs/edit.html.erb</p>
+<h1>Edit a Gig</h1>
+
+Current info:
+<%= link_to "#{@gig.performer.performer_name}", performer_path(@gig.performer) %> at <%= link_to "#{@gig.venue.venue_description}", venue_path(@gig.venue) %> on <%= @gig.date %>
+<br>
+
+<%= simple_form_for @gig, html: {class: "form-horizontal"} do |form| %>
+	<%= form.input :performer_id %>
+	<%= form.input :venue_id %>
+	<%= form.input :date %>
+	<%= form.submit "Update Gig", class: "btn btn-primary" %>
+<% end %>

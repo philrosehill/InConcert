@@ -1,5 +1,5 @@
 class PerformersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
    def index
     @performers = Performer.all
@@ -20,12 +20,21 @@ class PerformersController < ApplicationController
   end
 
   def edit
+    @performer = Performer.find(params[:id])
   end
 
   def update
+    @performer = Performer.find(params[:id])
+
+    if @performer.update_attributes(performer_params)
+      redirect_to performers_path
+    else
+      render :edit
+    end
   end
 
   def show
+    @performer = Performer.find(params[:id])
   end
 
   private

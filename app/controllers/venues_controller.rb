@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @venues = Venue.all
@@ -20,12 +20,21 @@ class VenuesController < ApplicationController
   end
 
   def edit
+    @venue = Venue.find(params[:id])
   end
 
   def update
+    @venue = Venue.find(params[:id])
+
+    if @venue.update_attributes(venue_params)
+      redirect_to venues_path
+    else
+      render :edit
+    end
   end
 
   def show
+    @venue = Venue.find(params[:id])
   end
 
   private

@@ -4,88 +4,16 @@ Rails.application.routes.draw do
   resources :performers
   resources :venues
   resources :gigs
+  resources :users, only: [:index, :show]
 
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "user/registrations" }
 
 
   resources :venues do 
     resources :photos
   end
 
-
-
-  # get 'gigs/index'
-
-  # get 'gigs/new'
-
-  # get 'gigs/create'
-
-  # get 'gigs/edit'
-
-  # get 'gigs/update'
-
-  # get 'gigs/show'
-
-  # get 'venues/index'
-
-  # get 'venues/new'
-
-  # get 'venues/create'
-
-  # get 'venues/edit'
-
-  # get 'venues/update'
-
-  # get 'venues/show'
-
-  # get 'performers/index'
-
-  # get 'performers/new'
-
-  # get 'performers/create'
-
-  # get 'performers/edit'
-
-  # get 'performers/update'
-
-  # get 'performers/show'
-
-  # get 'photos/index'
-
-  # get 'photos/new'
-
-  # get 'photos/create'
-
-  # get 'photos/edit'
-
-  # get 'photos/update'
-
-  # get 'photos/show'
-
-  # get 'avatars/index'
-
-  # get 'avatars/new'
-
-  # get 'avatars/create'
-
-  # get 'avatars/edit'
-
-  # get 'avatars/update'
-
-  # get 'avatars/show'
-
-  # get 'users/index'
-
-  # get 'users/new'
-
-  # get 'users/create'
-
-  # get 'users/edit'
-
-  # get 'users/update'
-
-  # get 'users/show'
 
 
 

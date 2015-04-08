@@ -1,2 +1,24 @@
-<h1>Performers#show</h1>
-<p>Find me in app/views/performers/show.html.erb</p>
+<h1>Performer Display</h1>
+
+This is the Performer: <br>
+<%= @performer.performer_name %> is a <%= @performer.performer_description %> performer.
+<br>
+<br>
+
+<%= @performer.performer_name %> has these Gigs: <br>
+<% @performer.gigs.each do |gig| %>
+	<%= link_to "#{gig.venue.venue_name}", venue_path(gig.venue) %> on <%= gig.date %><br>
+<% end %>
+<br>
+<br>
+
+These Users like <%= @performer.performer_name %>: <br>
+<% @performer.users.each do |user| %>
+	<%= link_to "#{user.name}", user_path(user) %> <br>
+<% end %>
+<br>
+<br>
+<p>To edit this Perfomer, <%= link_to "Click Here", edit_performer_path(@performer.id) %></p>
+
+
+
